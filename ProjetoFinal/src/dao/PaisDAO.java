@@ -10,7 +10,7 @@ import java.util.List;
 import model.Pais;
 
 public class PaisDAO {
-	// CRUD
+		// CRUD
 		// INSERT
 		public Pais criar(Pais pais) {
 			String sqlInsert = "INSERT INTO pais(nome, populacao, area) VALUES (?, ?, ?)";
@@ -88,6 +88,7 @@ public class PaisDAO {
 				e.printStackTrace();
 			}
 		}
+		
 		public List<Pais> listar() {
 			List <Pais> pais = new ArrayList <>();
 			String sql = "SELECT * FROM pais";

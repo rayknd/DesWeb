@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="model.Pais" %>
-<%@ page import="model.Modalidade" %>
-<%@ page import="model.Olimpiada" %>
-<%@ page import="java.util.List" %>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %><!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -14,46 +11,24 @@
 		<title>Cadastro de Pais</title>
 	</head>
 	<body>
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Olimpiadas</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="PaisCadastro.jsp">Países</a>
-                    </li>
-                    <li><a href="ModalidadeCadastro.jsp">Modalidades</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    	</nav>
-    	<% Pais pais = (Pais)request.getAttribute("pais"); %>
-    	<% Modalidade modalidade = (Modalidade)request.getAttribute("modalidade"); %>
-    	<% Olimpiada olimpiada = (Olimpiada)request.getAttribute("olimpiada");%>
+		<c:import url="menu.jsp"></c:import>
 		<br><br><br><br>
 		<div class="container">
 			
-			<h2 class="page-header"><%=pais.getNome() %>, <%=modalidade.getNome() %>, <%=olimpiada.getAno() %></h2>
+			<h2 class="page-header">${pais.nome}, ${modalidade.nome}, ${olimpiada.ano}</h2>
 			
 			<div class="row">
 				<div class="col-md-4">
 					<h3>Ouro</h3>
-					<p><%= modalidade.getOuro() %>
+					<p>${modalidade.ouro}</p>
 				</div>
 				<div class="col-md-4">
 					<h3>Prata</h3>
-					<p><%= modalidade.getPrata() %>
+					<p>${modalidade.prata}</p>
 				</div>
 				<div class="col-md-4">
 					<h3>Bronze</h3>
-					<p><%= modalidade.getBronze() %>
+					<p>${modalidade.bronze}</p>
 				</div>
 			<hr>
 			

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="model.Modalidade" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -11,43 +13,24 @@
         <title>Modalidade</title>
     </head>
     <body>
- 	<%Modalidade modalidade = (Modalidade)request.getAttribute("modalidade"); %>
- 	<nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Olimpiadas</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="PaisCadastro.jsp">Pais</a>
-                    </li>
-                    <li><a href="ModalidadeCadastro.jsp">Modalidade</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+ 	
+ 	<c:import url="menu.jsp"></c:import>
     <br>
     <div class="container">
         <h2 class= "page-header">Modalidade Cadastrada com Sucesso!</h2>
-        
-        <div class="row">
-     		<div class="form-group col-md-6">
-           		<label ><strong>Id</strong></label>
-                <p> <%=modalidade.getId() %></p>
-
-            </div>
-            <div class="form-group col-md-6">
-            	<label ><strong>Modalidade</strong></label>
-                <p> <%=modalidade.getNome() %></p>
-            </div>
-        </div>
+        <c:forEach var="moda" items="modalidade">
+	        <div class="row">
+	     		<div class="form-group col-md-6">
+	           		<label ><strong>Id</strong></label>
+	                <p>${moda.id}</p>
+	
+	            </div>
+	            <div class="form-group col-md-6">
+	            	<label ><strong>Modalidade</strong></label>
+	                <p> ${moda.nome}</p>
+	            </div>
+	        </div>
+        </c:forEach>
         <hr>
     </div>
     </body>

@@ -35,7 +35,9 @@ public class ManterOlimpiadaController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String pAcao = request.getParameter("acao");
+		System.out.println(pAcao);
 		PaisService ps = new PaisService();
 		ModalidadeService ms = new ModalidadeService();
 		OlimpiadaService os = new OlimpiadaService();
@@ -66,6 +68,7 @@ public class ManterOlimpiadaController extends HttpServlet {
 	        request.getRequestDispatcher("Pais.jsp");
 	        view.forward(request, response);
 		}
+		
 		if(pAcao.equals("criarModalidade")) {
 			String pNome = request.getParameter("modalidade");
 			String pTipo = request.getParameter("tipo");
@@ -94,6 +97,7 @@ public class ManterOlimpiadaController extends HttpServlet {
 	        request.getRequestDispatcher("Modalidade.jsp");
 	        view.forward(request, response);
 		}
+		
 		if(pAcao.equals("pesquisarOlimpiada")) {
 			List<Pais> pais = ps.listar();
 			List<Modalidade> modalidade = ms.listar();
@@ -104,6 +108,7 @@ public class ManterOlimpiadaController extends HttpServlet {
 			request.setAttribute("olimpiada", olimpiada);
 			request.getRequestDispatcher("OlimpiadasPesquisar.jsp").forward(request, response);
 		}
+		
 		if(pAcao.equals("carregarMedalhas")) {
 			int idPais = Integer.parseInt(request.getParameter("pais"));
 			int idModalidade = Integer.parseInt(request.getParameter("modalidade"));

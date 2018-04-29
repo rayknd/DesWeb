@@ -9,7 +9,6 @@ import java.util.List;
 
 import model.Modalidade;
 import model.Olimpiada;
-import model.Pais;
 
 public class ModalidadeDAO {
 	// INSERT
@@ -89,7 +88,7 @@ public class ModalidadeDAO {
 				while (rs.next()) {
 					int    id   	= rs.getInt("idmodalidade");
 					String nome 	= rs.getString("nome");
-					String tipo = rs.getString("tipo");
+					//String tipo = rs.getString("tipo");
 
 					Modalidade mode = new Modalidade();
 					mode.setId(id);

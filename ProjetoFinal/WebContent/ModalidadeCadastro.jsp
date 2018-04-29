@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,26 +12,7 @@
 		<title>Cadastro de Pais</title>
 	</head>
 	<body>
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Olimpiadas</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="PaisCadastro.jsp">Países</a>
-                    </li>
-                    <li><a href="ModalidadeCadastro.jsp">Modalidades</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    	</nav>
+		<c:import url="menu.jsp"></c:import>
 		<br><br>
 		<div class="container">
 			<h1 class="page-header">Cadastro de Modalidade</h1>
