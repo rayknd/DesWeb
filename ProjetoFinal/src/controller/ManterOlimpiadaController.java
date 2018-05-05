@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Modalidade;
 import model.Olimpiada;
@@ -38,9 +40,14 @@ public class ManterOlimpiadaController extends HttpServlet {
 		
 		String pAcao = request.getParameter("acao");
 		System.out.println(pAcao);
+		
 		PaisService ps = new PaisService();
 		ModalidadeService ms = new ModalidadeService();
 		OlimpiadaService os = new OlimpiadaService();
+		
+		HttpSession session = request.getSession();
+		
+		request.setCharacterEncoding("UTF-8");
 		
 		if(pAcao.equals("criarPais")) {
 			String pNome = request.getParameter("pais");
@@ -122,13 +129,11 @@ public class ManterOlimpiadaController extends HttpServlet {
 			Olimpiada olimpiada = new Olimpiada();
 			Pais pais = new Pais();
 			pais.setId(idPais);
-			pais = ps.carregar(pais);
+			pais = ps.carregar(pais);	
 			modalidade.setId(idModalidade);
 			modalidade = ms.carregar(modalidade);
 			olimpiada.setAno(ano);
-			System.out.println(modalidade.getOuro());
-			System.out.println(modalidade.getPrata());
-			System.out.println(modalidade.getBronze());
+
 			System.out.println(modalidade.getId());
 			
 			
@@ -138,6 +143,178 @@ public class ManterOlimpiadaController extends HttpServlet {
 			request.setAttribute("olimpiada", olimpiada);
 			request.getRequestDispatcher("OlimpiadasMedalhas.jsp").forward(request, response);
 		}
+		
+		if(pAcao.equals("criarMedalhas")) {
+			int idPais = Integer.parseInt(request.getParameter("pais"));
+			int idModalidade = Integer.parseInt(request.getParameter("modalidade"));
+			int ano	=	Integer.parseInt(request.getParameter("ano"));
+			
+			System.out.println(idPais);
+			System.out.println(idModalidade);
+			System.out.println(ano);
+			
+			
+			Modalidade modalidade = new Modalidade();
+			Olimpiada olimpiada = new Olimpiada();
+			Pais pais = new Pais();
+			pais.setId(idPais);
+			pais = ps.carregar(pais);
+			modalidade.setId(idModalidade);
+			modalidade = ms.carregar(modalidade);
+			olimpiada.setAno(ano);
+		
+			
+			request.setAttribute("pais", pais);
+			request.setAttribute("modalidade", modalidade);
+			request.setAttribute("olimpiada", olimpiada);
+			request.getRequestDispatcher("OlimpiadaCadastro.jsp").forward(request, response);
+		}
+		
+		if(pAcao.equals("criarOlimpiada")) {
+			int idPais = Integer.parseInt(request.getParameter("pais"));
+			int idModalidade = Integer.parseInt(request.getParameter("modalidade"));
+			int ano = Integer.parseInt(request.getParameter("ano"));
+			int ouro = Integer.parseInt(request.getParameter("ouro"));
+			int prata = Integer.parseInt(request.getParameter("prata"));
+			int bronze = Integer.parseInt(request.getParameter("bronze"));
+			
+			Modalidade modalidade = new Modalidade();
+			Olimpiada olimpiada = new Olimpiada();
+			Pais pais = new Pais();
+			pais.setId(idPais);
+			pais = ps.carregar(pais);
+			modalidade.setId(idModalidade);
+			modalidade.setOuro(ouro);
+			modalidade.setPrata(prata);
+			modalidade.setBronze(bronze);
+			modalidade = ms.carregar(modalidade);
+			olimpiada.setAno(ano);
+			
+			os.criar(pais, olimpiada, modalidade);
+			
+			request.setAttribute("pais", pais);
+			request.setAttribute("modalidade", modalidade);
+			request.setAttribute("olimpiada", olimpiada);
+			request.getRequestDispatcher("OlimpiadasMedalhas.jsp").forward(request, response);
+		}
+		
+		if(pAcao.equals("editarMedalhas")) {
+			int idPais = Integer.parseInt(request.getParameter("pais"));
+			int idModalidade = Integer.parseInt(request.getParameter("modalidade"));
+			int ano	=	Integer.parseInt(request.getParameter("ano"));
+			int ouro = Integer.parseInt(request.getParameter("ouro"));
+			int prata = Integer.parseInt(request.getParameter("prata"));
+			int bronze = Integer.parseInt(request.getParameter("bronze"));
+			
+			System.out.println(idPais);
+			System.out.println(idModalidade);
+			System.out.println(ano);
+			
+			
+			Modalidade modalidade = new Modalidade();
+			Olimpiada olimpiada = new Olimpiada();
+			Pais pais = new Pais();
+			
+			pais.setId(idPais);
+			pais = ps.carregar(pais);
+			
+			modalidade.setId(idModalidade);
+			modalidade.setOuro(ouro);
+			modalidade.setPrata(prata);
+			modalidade.setBronze(bronze);
+			modalidade = ms.carregar(modalidade);
+			
+			olimpiada.setAno(ano);
+		
+			
+			request.setAttribute("pais", pais);
+			request.setAttribute("modalidade", modalidade);
+			request.setAttribute("olimpiada", olimpiada);
+			request.getRequestDispatcher("OlimpiadaEditar.jsp").forward(request, response);
+		}
+		
+		if(pAcao.equals("editarOlimpiada")) {
+			int idPais = Integer.parseInt(request.getParameter("pais"));
+			int idModalidade = Integer.parseInt(request.getParameter("modalidade"));
+			int ano = Integer.parseInt(request.getParameter("ano"));
+			int ouro = Integer.parseInt(request.getParameter("ouro"));
+			int prata = Integer.parseInt(request.getParameter("prata"));
+			int bronze = Integer.parseInt(request.getParameter("bronze"));
+			
+			Modalidade modalidade = new Modalidade();
+			Olimpiada olimpiada = new Olimpiada();
+			Pais pais = new Pais();
+			pais.setId(idPais);
+			pais = ps.carregar(pais);
+			modalidade.setId(idModalidade);
+			modalidade.setOuro(ouro);
+			modalidade.setPrata(prata);
+			modalidade.setBronze(bronze);
+			modalidade = ms.carregar(modalidade);
+			olimpiada.setAno(ano);
+			
+			os.atualizar(pais, modalidade, olimpiada);
+			
+			request.setAttribute("pais", pais);
+			request.setAttribute("modalidade", modalidade);
+			request.setAttribute("olimpiada", olimpiada);
+			request.getRequestDispatcher("OlimpiadasMedalhas.jsp").forward(request, response);
+		}
+		
+		if(pAcao.equals("excluirOlimpiada")) {
+			int idPais = Integer.parseInt(request.getParameter("pais"));
+			int idModalidade = Integer.parseInt(request.getParameter("modalidade"));
+			int ano	=	Integer.parseInt(request.getParameter("ano"));
+			
+			System.out.println(idPais);
+			System.out.println(idModalidade);
+			System.out.println(ano);
+			
+			
+			Modalidade modalidade = new Modalidade();
+			Olimpiada olimpiada = new Olimpiada();
+			Pais pais = new Pais();
+			
+			pais.setId(idPais);
+			pais = ps.carregar(pais);
+			
+			modalidade.setId(idModalidade);
+			modalidade = ms.carregar(modalidade);
+			
+			olimpiada.setAno(ano);
+			
+			os.excluir(pais, modalidade, olimpiada);
+				
+			request.setAttribute("pais", pais);
+			request.setAttribute("modalidade", modalidade);
+			request.setAttribute("olimpiada", olimpiada);
+			request.getRequestDispatcher("excluirOlimpiada.jsp").forward(request, response);
+		}
+		
+		
+		
+		if (pAcao.equals("buscar")) {
+			String chave = request.getParameter("data[search]");
+			ArrayList<Pais> lista = null;
+			
+			if (chave != null && chave.length() > 0) {
+				lista = ps.listarPais(chave);
+			} else {
+				lista = ps.listar();
+			}
+			session.setAttribute("lista", lista);
+			
+			request.getRequestDispatcher("ListarTeste.jsp").forward(request, response);
+			
+			
+		} else if (pAcao.equals("reiniciar")) {
+			session.setAttribute("lista", null);
+			request.getRequestDispatcher("ListarTeste.jsp").forward(request, response);
+		}
 
 	}
-}
+
+		
+
+	}
+

@@ -49,6 +49,7 @@
 			<div class="row">
 				<div class="col-md-9"></div>
 				<div class="col-md-3 text-right">
+					<button type="submit" class="btn btn-primary" name="acao" value="criarMedalhas">Novo</button>
 					<button type="submit" class="btn btn-primary" name="acao" value="carregarMedalhas">Pesquisar</button>
 				</div>
 			</div>
