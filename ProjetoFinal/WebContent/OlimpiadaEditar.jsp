@@ -16,7 +16,7 @@
 		<br><br>
 		<div class="container">
 			<h1 class="page-header">Edição de Olimpiadas</h1>
-			<form action="ManterOlimpiada.do" method="post">
+			<form action="controller.do" method="post">
 				<div class="row">
 					<div class="form-group col-md-6">
 							<label><strong>Pais</strong></label>
@@ -50,7 +50,7 @@
 				<hr />
 				<div class="row text-right">
 	                	<div class="col-md-12">
-	                    	<button type="submit" class="btn btn-primary" name="acao" value="editarOlimpiada">Salvar</button>	
+	                    	<button type="submit" class="btn btn-primary" name="command" value="EditarOlimpiada">Salvar</button>	
 	                    		<a href="index.jsp" class="btn btn-default">Cancelar</a>
 	               		</div>
 	           	</div>

@@ -1,24 +1,24 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+/*import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
+*/import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+//import javax.servlet.http.HttpSession;
 
-import model.Modalidade;
+/*import model.Modalidade;
 import model.Olimpiada;
 import model.Pais;
 import service.ModalidadeService;
 import service.OlimpiadaService;
 import service.PaisService;
-
+*/
 /**
  * Servlet implementation class ManterClienteController
  */
@@ -38,18 +38,18 @@ public class ManterOlimpiadaController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String pAcao = request.getParameter("acao");
-		System.out.println(pAcao);
+	//	String pAcao = request.getParameter("acao");
+	//	System.out.println(pAcao);
 		
-		PaisService ps = new PaisService();
+/*		PaisService ps = new PaisService();
 		ModalidadeService ms = new ModalidadeService();
 		OlimpiadaService os = new OlimpiadaService();
 		
 		HttpSession session = request.getSession();
+*/		
+//		request.setCharacterEncoding("UTF-8");
 		
-		request.setCharacterEncoding("UTF-8");
-		
-		if(pAcao.equals("criarPais")) {
+		/*if(pAcao.equals("criarPais")) {
 			String pNome = request.getParameter("pais");
 			int pPopulacao = Integer.parseInt(request.getParameter("populacao"));
 			double pArea= Double.parseDouble(request.getParameter("area"));
@@ -74,9 +74,9 @@ public class ManterOlimpiadaController extends HttpServlet {
 	        RequestDispatcher view = 
 	        request.getRequestDispatcher("Pais.jsp");
 	        view.forward(request, response);
-		}
+		}*/
 		
-		if(pAcao.equals("criarModalidade")) {
+		/*if(pAcao.equals("criarModalidade")) {
 			String pNome = request.getParameter("modalidade");
 			String pTipo = request.getParameter("tipo");
 			
@@ -104,8 +104,8 @@ public class ManterOlimpiadaController extends HttpServlet {
 	        request.getRequestDispatcher("Modalidade.jsp");
 	        view.forward(request, response);
 		}
-		
-		if(pAcao.equals("pesquisarOlimpiada")) {
+*/		
+/*		if(pAcao.equals("pesquisarOlimpiada")) {
 			List<Pais> pais = ps.listar();
 			List<Modalidade> modalidade = ms.listar();
 			List<Olimpiada> olimpiada = os.listar();
@@ -114,9 +114,9 @@ public class ManterOlimpiadaController extends HttpServlet {
 			request.setAttribute("modalidade", modalidade);
 			request.setAttribute("olimpiada", olimpiada);
 			request.getRequestDispatcher("OlimpiadasPesquisar.jsp").forward(request, response);
-		}
+		}*/
 		
-		if(pAcao.equals("carregarMedalhas")) {
+/*		if(pAcao.equals("carregarMedalhas")) {
 			int idPais = Integer.parseInt(request.getParameter("pais"));
 			int idModalidade = Integer.parseInt(request.getParameter("modalidade"));
 			int ano	=	Integer.parseInt(request.getParameter("ano"));
@@ -142,9 +142,9 @@ public class ManterOlimpiadaController extends HttpServlet {
 			request.setAttribute("modalidade", modalidade);
 			request.setAttribute("olimpiada", olimpiada);
 			request.getRequestDispatcher("OlimpiadasMedalhas.jsp").forward(request, response);
-		}
+		}*/
 		
-		if(pAcao.equals("criarMedalhas")) {
+/*		if(pAcao.equals("criarMedalhas")) {
 			int idPais = Integer.parseInt(request.getParameter("pais"));
 			int idModalidade = Integer.parseInt(request.getParameter("modalidade"));
 			int ano	=	Integer.parseInt(request.getParameter("ano"));
@@ -168,9 +168,9 @@ public class ManterOlimpiadaController extends HttpServlet {
 			request.setAttribute("modalidade", modalidade);
 			request.setAttribute("olimpiada", olimpiada);
 			request.getRequestDispatcher("OlimpiadaCadastro.jsp").forward(request, response);
-		}
+		}*/
 		
-		if(pAcao.equals("criarOlimpiada")) {
+/*		if(pAcao.equals("criarOlimpiada")) {
 			int idPais = Integer.parseInt(request.getParameter("pais"));
 			int idModalidade = Integer.parseInt(request.getParameter("modalidade"));
 			int ano = Integer.parseInt(request.getParameter("ano"));
@@ -196,9 +196,9 @@ public class ManterOlimpiadaController extends HttpServlet {
 			request.setAttribute("modalidade", modalidade);
 			request.setAttribute("olimpiada", olimpiada);
 			request.getRequestDispatcher("OlimpiadasMedalhas.jsp").forward(request, response);
-		}
+		}*/
 		
-		if(pAcao.equals("editarMedalhas")) {
+		/*if(pAcao.equals("editarMedalhas")) {
 			int idPais = Integer.parseInt(request.getParameter("pais"));
 			int idModalidade = Integer.parseInt(request.getParameter("modalidade"));
 			int ano	=	Integer.parseInt(request.getParameter("ano"));
@@ -231,9 +231,9 @@ public class ManterOlimpiadaController extends HttpServlet {
 			request.setAttribute("modalidade", modalidade);
 			request.setAttribute("olimpiada", olimpiada);
 			request.getRequestDispatcher("OlimpiadaEditar.jsp").forward(request, response);
-		}
+		}*/
 		
-		if(pAcao.equals("editarOlimpiada")) {
+/*		if(pAcao.equals("editarOlimpiada")) {
 			int idPais = Integer.parseInt(request.getParameter("pais"));
 			int idModalidade = Integer.parseInt(request.getParameter("modalidade"));
 			int ano = Integer.parseInt(request.getParameter("ano"));
@@ -259,16 +259,12 @@ public class ManterOlimpiadaController extends HttpServlet {
 			request.setAttribute("modalidade", modalidade);
 			request.setAttribute("olimpiada", olimpiada);
 			request.getRequestDispatcher("OlimpiadasMedalhas.jsp").forward(request, response);
-		}
+		}*/
 		
-		if(pAcao.equals("excluirOlimpiada")) {
+/*		if(pAcao.equals("excluirOlimpiada")) {
 			int idPais = Integer.parseInt(request.getParameter("pais"));
 			int idModalidade = Integer.parseInt(request.getParameter("modalidade"));
 			int ano	=	Integer.parseInt(request.getParameter("ano"));
-			
-			System.out.println(idPais);
-			System.out.println(idModalidade);
-			System.out.println(ano);
 			
 			
 			Modalidade modalidade = new Modalidade();
@@ -289,11 +285,11 @@ public class ManterOlimpiadaController extends HttpServlet {
 			request.setAttribute("modalidade", modalidade);
 			request.setAttribute("olimpiada", olimpiada);
 			request.getRequestDispatcher("excluirOlimpiada.jsp").forward(request, response);
-		}
+		}*/
 		
 		
 		
-		if (pAcao.equals("buscar")) {
+		/*if (pAcao.equals("buscar")) {
 			String chave = request.getParameter("data[search]");
 			ArrayList<Pais> lista = null;
 			
@@ -310,11 +306,10 @@ public class ManterOlimpiadaController extends HttpServlet {
 		} else if (pAcao.equals("reiniciar")) {
 			session.setAttribute("lista", null);
 			request.getRequestDispatcher("ListarTeste.jsp").forward(request, response);
-		}
+		}*/
 
 	}
 
 		
-
 	}
 

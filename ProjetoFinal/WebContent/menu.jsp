@@ -22,9 +22,9 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="ManterOlimpiada.do?acao=reiniciar">Países</a>
+                    <li><a href="controller.do?command=Reiniciar">Países</a>
                     </li>
-                    <li><a href="ModalidadeCadastro.jsp">Modalidades</a>
+                    <li><a href="controller.do?command=CadastroModalidade">Modalidades</a>
                     </li>
                 </ul>
             </div>

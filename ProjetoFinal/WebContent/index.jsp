@@ -9,7 +9,7 @@
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<title>Cadastro de Pais</title>
+		<title>INDEX</title>
 	</head>
 	<body>
 		
@@ -21,10 +21,10 @@
 				<div class="col-md-4">
 				</div>
 				<div class="col-md-4 text-center">
-					<form action="ManterOlimpiada.do" method="post">
+					<form action="controller.do" method="post">
 						<h2>Pesquisar Olimpiada</h2>
 						<br>
-						<button type="submit" class="btn btn-primary" name="acao" value="pesquisarOlimpiada">Pesquisar</button>
+						<button type="submit" class="btn btn-primary" name="command" value="PesquisarOlimpiada">Pesquisar</button>
 					</form>
 				</div>
 			</div>
