@@ -13,7 +13,17 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 USE `mydb` ;
-DROP DATABASE mydb;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`usuario` (
+  `nickname` VARCHAR(100) NOT NULL unique,
+  `password` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`nickname`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
 -- -----------------------------------------------------
 -- Table `mydb`.`pais`
 -- -----------------------------------------------------

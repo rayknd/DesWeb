@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
+	
 	static {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -15,7 +16,13 @@ public class ConnectionFactory {
 	
 		// Obt�m conex�o com o banco de dados
 	public static Connection obtemConexao() throws SQLException {
-		return DriverManager
+		
+		return	 DriverManager
 				.getConnection("jdbc:mysql://localhost/mydb?user=root&password=");
+		
+		 
 	}
-}
+	
+
+
+}	

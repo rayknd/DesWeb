@@ -24,7 +24,9 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="controller.do?command=Reiniciar">Países</a>
                     </li>
-                    <li><a href="controller.do?command=CadastroModalidade">Modalidades</a>
+                    <li><a href="controller.do?command=ReiniciarModalidade">Modalidades</a>
+                    </li>
+                    <li><a href="Login.jsp">Login</a>
                     </li>
                 </ul>
             </div>

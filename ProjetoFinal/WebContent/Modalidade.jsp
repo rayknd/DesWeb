@@ -22,12 +22,12 @@
 	        <div class="row">
 	     		<div class="form-group col-md-6">
 	           		<label ><strong>Id</strong></label>
-	                <p>${moda.id}</p>
+	                <p>${modalidade.id}</p>
 	
 	            </div>
 	            <div class="form-group col-md-6">
 	            	<label ><strong>Modalidade</strong></label>
-	                <p> ${moda.nome}</p>
+	                <p> ${modalidade.nome}</p>
 	            </div>
 	        </div>
         </c:forEach>

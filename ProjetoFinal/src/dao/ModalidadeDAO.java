@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import model.Modalidade;
 import model.Olimpiada;
@@ -79,8 +78,8 @@ public class ModalidadeDAO {
 		}
 	}
 	
-	public List<Modalidade> listarModalidade() {
-		List <Modalidade> modalidade = new ArrayList <>();
+	public ArrayList<Modalidade> listarModalidade() {
+		ArrayList <Modalidade> modalidade = new ArrayList <>();
 		String sql = "SELECT * FROM modalidade";
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement ps = conn.prepareStatement(sql);
@@ -88,11 +87,12 @@ public class ModalidadeDAO {
 				while (rs.next()) {
 					int    id   	= rs.getInt("idmodalidade");
 					String nome 	= rs.getString("nome");
-					//String tipo = rs.getString("tipo");
+					String tipo 	= rs.getString("tipo");
 
 					Modalidade mode = new Modalidade();
 					mode.setId(id);
 					mode.setNome(nome);
+					mode.setTipo(tipo);
 					modalidade.add(mode);
 
 				}
@@ -102,4 +102,30 @@ public class ModalidadeDAO {
 		}
 		return modalidade;
 	}
+	
+	public ArrayList<Modalidade> listarModalidade(String chave) {
+		Modalidade modalidade;
+		ArrayList<Modalidade> lista = new ArrayList<>();
+		String sqlSelect = "SELECT idmodalidade, nome, tipo FROM modalidade where upper(nome) like ?";
+		// usando o try with resources do Java 7, que fecha o que abriu
+		try (Connection conn = ConnectionFactory.obtemConexao();
+				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+			stm.setString(1, "%" + chave.toUpperCase() + "%");
+			try (ResultSet rs = stm.executeQuery();) {
+				while (rs.next()) {
+					modalidade = new Modalidade();
+					modalidade.setId(rs.getInt("idmodalidade"));
+					modalidade.setNome(rs.getString("nome"));
+					modalidade.setTipo(rs.getString("tipo"));
+					lista.add(modalidade);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e1) {
+			System.out.print(e1.getStackTrace());
+		}
+		return lista;
+	}
+	
 }

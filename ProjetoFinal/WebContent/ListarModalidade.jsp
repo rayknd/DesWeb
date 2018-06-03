@@ -7,7 +7,7 @@
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>Buscar Pais</title>
+            <title>Buscar Modalidade</title>
 
             <link href="css/bootstrap.min.css" rel="stylesheet">
             <link href="css/style.css" rel="stylesheet">
@@ -25,10 +25,10 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span>
                             </button>
-                            <h4 class="modal-title" id="modalLabel">Excluir Pais</h4>
+                            <h4 class="modal-title" id="modalLabel">Excluir Modalidade</h4>
                         </div>
                         <div class="modal-body">
-                            Deseja realmente excluir este pais?
+                            Deseja realmente excluir esta modalidade?
                         </div>
                         <div class="modal-footer">
                             <form action="controller.do" method="post">
@@ -47,14 +47,14 @@
                 <form action="controller.do" method="post">
                     <div id="top" class="row">
                         <div class="col-md-3">
-                            <h2>Pais</h2>
+                            <h2>Modalidades</h2>
                         </div>
 
                         <div class="col-md-6">
                             <div class="input-group h2">
-                                <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Pais (deixe vazio para trazer todos)">
+                                <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Modalidade (deixe vazio para trazer todos)">
                                 <span class="input-group-btn">
-	               					<button class="btn btn-primary" type="submit" name="command" value="BuscarPais">
+	               					<button class="btn btn-primary" type="submit" name="command" value="BuscarModalidade">
 	                    				<span class="glyphicon glyphicon-search"></span>
 	                                </button>
                                 </span>
@@ -62,7 +62,7 @@
                         </div>
 
                         <div class="col-md-3">
-                            <a href="PaisCadastro.jsp" class="btn btn-primary pull-right h2">Novo Pais</a>
+                            <a href="ModalidadeCadastro.jsp" class="btn btn-primary pull-right h2">Nova Modalidade</a>
                         </div>
                     </div>
                     <!-- /#top -->
@@ -77,30 +77,26 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nome</th>
-                                    <th>População</th>
-                                    <th>Área</th>
+                                    <th>Tipo</th>
                                     <th class="actions">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
-          					<c:forEach var="pais" items="${lista}">
+          					<c:forEach var="modalidade" items="${lista}">
                                        <tr>
                                             <td>
-                                               ${pais.id }
+                                               ${modalidade.id }
                                             </td>
                                             <td>
-                                                ${pais.nome }
+                                                ${modalidade.nome }
                                             </td>
                                             <td>
-                                                ${pais.populacao }
-                                            </td>
-                                            <td>
-                                                ${pais.area }
+                                                ${modalidade.tipo }
                                             </td>
                                             <td class="actions">
-                                                <a class="btn btn-success btn-xs" href="controller.do?command=VisualizarPais&id=${pais.id }">Visualizar</a>
-                                                <a class="btn btn-warning btn-xs" href="controller.do?command=EditarPais&id=${pais.id }">Editar</a>
-                                                <button id="btn${pais.id }%>" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal" data-cliente="${pais.id }">Excluir</button>
+                                                <a class="btn btn-success btn-xs" href="controller.do?command=VisualizarModalidade&id=${modalidade.id }">Visualizar</a>
+                                                <a class="btn btn-warning btn-xs" href="controller.do?command=EditarModalidade&id=${modalidade.id }">Editar</a>
+                                                <button id="btn${modalidade.id }%>" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal" data-cliente="${pais.id }">Excluir</button>
                                             </td>
                                         </tr>
                             </c:forEach>
@@ -139,7 +135,7 @@
             <script type="text/javascript">
                 $("#delete-modal").on('show.bs.modal', function(event) {
                     var button = $(event.relatedTarget); //botao que disparou a modal
-                    var recipient = button.data('pais');
+                    var recipient = button.data('modalidade');
                     $("#id_excluir").val(recipient);
                 });
             </script>

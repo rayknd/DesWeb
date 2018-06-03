@@ -3,17 +3,18 @@ package model;
 public class Modalidade {
 	private String nome;
 	private int id, ouro, prata, bronze;
-		
+	private String tipo;	
 		// Constructor
 	public Modalidade() {
 		super();
 	}
-	public Modalidade(int id, String nome, int ouro, int prata, int bronze) {
+	public Modalidade(int id, String nome, int ouro, int prata, int bronze, String tipo) {
 		setId(id);
 		setNome(nome);
 		setOuro(ouro);
 		setPrata(prata);
 		setBronze(bronze);
+		setTipo(tipo);
 	}
 	
 		// Getter and Setters
@@ -46,6 +47,12 @@ public class Modalidade {
 	}
 	public void setBronze(int bronze) {
 		this.bronze = bronze;
+	}
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 	
 	@Override

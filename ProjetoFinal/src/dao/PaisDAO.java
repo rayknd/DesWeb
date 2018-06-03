@@ -118,7 +118,7 @@ public class PaisDAO {
 		public ArrayList<Pais> listarPais(String chave) {
 			Pais pais;
 			ArrayList<Pais> lista = new ArrayList<>();
-			String sqlSelect = "SELECT id, nome, populacao, area FROM pais where upper(nome) like ?";
+			String sqlSelect = "SELECT idpais, nome, populacao, area FROM pais where upper(nome) like ?";
 			// usando o try with resources do Java 7, que fecha o que abriu
 			try (Connection conn = ConnectionFactory.obtemConexao();
 					PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
@@ -126,7 +126,7 @@ public class PaisDAO {
 				try (ResultSet rs = stm.executeQuery();) {
 					while (rs.next()) {
 						pais = new Pais();
-						pais.setId(rs.getInt("id"));
+						pais.setId(rs.getInt("idpais"));
 						pais.setNome(rs.getString("nome"));
 						pais.setPopulacao(rs.getInt("populacao"));
 						pais.setArea(rs.getDouble("area"));

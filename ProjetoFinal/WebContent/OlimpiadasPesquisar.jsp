@@ -8,7 +8,7 @@
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<title>Cadastro de Pais</title>
+		<title>Consulta de medalhas</title>
 	</head>
 	<body>
 		<c:import url="menu.jsp"></c:import>
@@ -21,7 +21,7 @@
 				<div class="col-md-4">
 					<select type="text" name="pais" class="form-control">
 				    	
-				    	<option>- Selecione uma opção -</option>
+				    	<option>- Selecione um País -</option>
 				       	<c:forEach var="p" items="${pais}">
 				       		<option value="${p.id}">${p.nome}</option>
 				       	</c:forEach>    	
@@ -29,7 +29,7 @@
 				</div>
 				<div class="col-md-4">
 					<select type="text" name="modalidade" class="form-control">
-				    	<option>- Selecione uma opção -</option>
+				    	<option>- Selecione uma Modalidade -</option>
 						<c:forEach var="m" items="${modalidade}">				     
 				       		<option value="${m.id}">${m.nome}</option>
 				       	</c:forEach>
@@ -37,7 +37,7 @@
 				</div>
 				<div class="col-md-4">
 					<select type="text" name="ano" class="form-control">
-				    	<option>- Selecione uma opção -</option>
+				    	<option>- Selecione uma Edição -</option>
 				       	<c:forEach var="o" items="${olimpiada}">
 				       		<option value="${o.ano}">${o.ano}</option>
 				       	</c:forEach>
